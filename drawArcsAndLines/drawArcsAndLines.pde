@@ -1,5 +1,6 @@
 
 class ArcsAndLinesDraw {
+
   int ix, x, y, al1, al2;
   
   ArcsAndLinesDraw(int argix, int argx, int argy, int argal1, int argal2) {
@@ -12,9 +13,9 @@ class ArcsAndLinesDraw {
   }// end constructor
 
 
-  void drw() {
-      image(al.imgs[al1], x, y);
-      image(al.imgs[al2], x, y);
+  void drw(PGraphics buf) {
+      buf.image(al.imgs[al1], x, y);
+      buf.image(al.imgs[al2], x, y);
     }
   }
   //
@@ -24,13 +25,13 @@ class ArcsAndLinesDrawz{
   ArrayList <ArcsAndLinesDraw> cset = new ArrayList<ArcsAndLinesDraw>();
   
   void mk(int ix, int x, int y, int al1, int al2){
-    cset.add(new ArcsAndLinesDraw(ix, x, y, al1, al2));
+    cset.add(new ArcsAndLinesDraw(buf, ix, x, y, al1, al2));
   }//end mk Method
   
-  void drw(){
+  void drw(PGraphics buf){
     for(int i=ArcsAndLinesDraw.size()-1; i<=0; i--){
       ArcsAndLinesDraw inst = cset.get(i);
-      inst.drw();
+      inst.drw(buf);
     }
   }// end drw method
   
